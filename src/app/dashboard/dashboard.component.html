@@ -1,0 +1,47 @@
+<div class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h1 style="color: white;">Angular Example</h1>
+        <div class="d-flex">
+            <button type="button" (click)="addBtn()" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                class="btn btn-success">Add Record</button>
+        </div>
+    </div>
+</div>
+
+<div class="main-container">
+<div class="card card-design" style="width: 18rem;" *ngFor="let item of blogPost; let i=index">
+    <div class="card-body">
+        <h5 class="card-title">{{item.title | uppercase}}</h5>
+        <p class="card-text">{{item.body}}</p>
+    </div>
+    <div class="card-footer">
+        <i class="bi bi-pencil-square" (click)="editBtn(item?.id)"></i>
+        <i class="bi bi-trash3" (click)="deleteBtn(item)" style="float: right;"></i>
+        <!-- <a (click)="editBtn(item?.id)" class="card-link">Edit</a> -->
+        <!-- <a (click)="deleteBtn(item)" class="card-link">Delete</a> -->
+    </div>
+</div>
+</div>
+
+<!-- Showing records -->
+<table class="table m-3">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Body</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let item of blogPost; let i=index">
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.body}}</td>
+            <td >
+                <button class="btn btn-info" (click)="editBtn(item?.id)">Edit</button>
+                <button class="btn btn-danger mt-2" (click)="deleteBtn(item)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
